@@ -1,8 +1,8 @@
 ============
-{{pkg_name}}
+discord-styled-text
 ============
 
-{{pkg_description}}
+A small library to style text for Discord without having to remember any syntax
 
 .. toctree::
     :hidden:
@@ -12,14 +12,14 @@
 Installation
 ============
 
-``{{pkg_name}}`` requires Python 3.8 at minimum. Install by running::
+``discord-styled-text`` requires Python 3.8 at minimum. Install by running::
 
-    $ pip install {{pkg_name}}
+    $ pip install discord-styled-text
 
 License
 =======
 
-Copyright {{YYYY}} {{authors}}
+Copyright 2021 classabbyamp, 0x5c
 
-Released under the {{license}} License. See ``LICENSE`` for the full license text.
+Released under the BSD 3-Clause License. See ``LICENSE`` for the full license text.
 
