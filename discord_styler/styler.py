@@ -1,22 +1,41 @@
+"""
+discord-styled-text - styler.py
+---
+Copyright 2021 classabbyamp, 0x5c
+Released under the terms of the BSD 3-Clause license.
+"""
+
+
 from typing import Union
 from datetime import datetime, timezone
 from enum import Enum
 
 # TODO:
+# - blockquotes
+# - emojis?
 # - escaping text
+# - typing?
 # - write tests
 # - clean up repo
 # - write docs
 
-
-class TimeStyle(Enum):
-    ShortTime = "t"
-    LongTime = "T"
-    ShortDate = "d"
-    LongDate = "D"
-    ShortDateTime = "f"
-    LongDateTime = "F"
-    Relative = "R"
+__all__ = [
+    "StyledText",
+    "Italic",
+    "Bold",
+    "Underline",
+    "Strikethrough",
+    "InlineCode",
+    "Spoiler",
+    "CodeBlock",
+    "TitledURL",
+    "NonEmbeddingURL",
+    "UserMention",
+    "RoleMention",
+    "ChannelMention",
+    "TimeStyle",
+    "TimeStamp",
+]
 
 
 class StyledText:
@@ -72,7 +91,7 @@ class CodeBlock:
 class TitledURL:
     def __init__(self, title: Union[str, StyledText], url: str):
         self.__title = title
-        # TODO: Check URL validity?
+        # Discord will only render http(s) URLs
         if not url.lower().startswith("http://") or not url.lower().startswith("https://"):
             raise ValueError("The URL must be either HTTP or HTTPS!")
         self.__url = url
@@ -83,7 +102,7 @@ class TitledURL:
 
 class NonEmbeddingURL:
     def __init__(self, url: str):
-        # TODO: Check URL validity?
+        # Discord will only render http(s) URLs
         if not url.lower().startswith("http://") or not url.lower().startswith("https://"):
             raise ValueError("The URL must be either HTTP or HTTPS!")
         self.__url = url
@@ -122,6 +141,16 @@ class ChannelMention(Mention):
 
 # ---- Time ----
 
+class TimeStyle(Enum):
+    ShortTime = "t"
+    LongTime = "T"
+    ShortDate = "d"
+    LongDate = "D"
+    ShortDateTime = "f"
+    LongDateTime = "F"
+    Relative = "R"
+
+
 class TimeStamp:
     def __init__(self, time: Union[int, datetime], style: TimeStyle = None):
         if isinstance(time, int):
@@ -134,38 +163,3 @@ class TimeStamp:
 
     def __str__(self):
         return f"<t:{self.__time.timestamp():.0f}{':' + self.__style if self.__style is not None else ''}>"
-
-
-"""
-x User <@_>
-x UserNickname <@!_>
-x Role <@&_>
-x Channel <#_>
-"""
-
-"""
-X Italics *_* or _-_
-X Bold **_**
-X Underline __-__
-X Strikethrough ~~_~~
-X inline code `_`
-X spoilers
-
-block quotes
-
-X titled URL (for embeds)
-X non-embedding URL
-
-X code blocks (with languages)
-    ```lang
-    _
-    ```
-x timestamp
-    <t:UNIX_SEC_TIME>
-    <t:UNIX_SEC_TIME:STYLE>
-    STYLE is enum
-"""
-
-"""
-unicode/custom/animated emoji?
-"""
