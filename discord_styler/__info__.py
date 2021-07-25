@@ -4,7 +4,7 @@
 
 __project__ = "discord-styled-text"
 __summary__ = "A small library to style text for Discord without having to remember any syntax"
-__webpage__ = "https://discordstyledtext.maiow.io"
+__webpage__ = "https://discord-styled-text.miaow.io"
 
 __version__ = "{{version}}"
 
