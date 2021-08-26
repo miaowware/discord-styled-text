@@ -9,11 +9,10 @@ Released under the terms of the BSD 3-Clause license.
 from abc import ABC, abstractmethod
 from datetime import datetime, timezone
 from enum import Enum
-import re
 from typing import Any, Union
 
 # TODO:
-# - escaping text
+# - escaping text (only missing titled URLs)
 # - write tests
 # - clean up repo
 
@@ -38,10 +37,6 @@ __all__ = [
 
 
 ALLOWED_URL_SCHEMES = ("http://", "https://", "steam://")
-
-
-def escape_mentions(inp: str) -> str:
-    return re.sub(r"<(@[!&]?|#)[0-9]+>", r"\\\g<0>", inp)
 
 
 # ---- Text Styles ----

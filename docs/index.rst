@@ -115,6 +115,15 @@ Timestamps
 
 .. autoenum:: TimeStyle()
 
+Utility Functions
+-----------------
+
+.. autofunction:: escape_everything()
+
+.. autofunction:: escape_markdown()
+
+.. autofunction:: escape_mentions()
+
 License
 =======
 
