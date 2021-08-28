@@ -12,7 +12,6 @@ from enum import Enum
 from typing import Any, Union
 
 # TODO:
-# - escaping text (only missing titled URLs)
 # - write tests
 # - clean up repo
 
@@ -121,6 +120,8 @@ class BlockQuote(StyledText):
     Takes the same parameters as :class:`StyledText`.
     """
     def __str__(self) -> str:
+        # the final newline is intended because otherwise the text
+        # after the blockquote will still be blockquoted
         return "> " + super().__str__().replace("\n", "\n> ") + "\n"
 
 
@@ -152,9 +153,9 @@ class TitledURL:
     """
     def __init__(self, title: Union[str, StyledText], url: str):
         self.__title = title
-        # Discord will only render http(s) URLs
+        # Discord will only render http(s) and steam URLs
         if not url.lower().startswith(ALLOWED_URL_SCHEMES):
-            raise ValueError("The URL must be either HTTP or HTTPS!")
+            raise ValueError(f"The URL must start with one of: {', '.join(ALLOWED_URL_SCHEMES)}")
         self.__url = url
 
     def __str__(self) -> str:
@@ -169,9 +170,9 @@ class NonEmbeddingURL:
     :param url: The URL. Must be http or https protocol
     """
     def __init__(self, url: str):
-        # Discord will only render http(s) URLs
+        # Discord will only render http(s) and steam URLs
         if not url.lower().startswith(ALLOWED_URL_SCHEMES):
-            raise ValueError("The URL must be either HTTP or HTTPS!")
+            raise ValueError(f"The URL must start with one of: {', '.join(ALLOWED_URL_SCHEMES)}")
         self.__url = url
 
     def __str__(self) -> str:
@@ -268,10 +269,13 @@ class TimeStamp:
     def __init__(self, time: Union[int, datetime], style: TimeStyle = None):
         if isinstance(time, int):
             self.__time = datetime.fromtimestamp(time, tz=timezone.utc)
-        elif time.tzinfo != timezone.utc:
-            self.__time = time.astimezone(timezone.utc)
+        elif isinstance(time, datetime):
+            if time.tzinfo != timezone.utc:
+                self.__time = time.astimezone(timezone.utc)
+            else:
+                self.__time = time
         else:
-            self.__time = time
+            raise ValueError("The time must be an int or a datetime object!")
         self.__style = style
 
     def __str__(self):

@@ -1,5 +1,5 @@
 """
-discord-styled-text - styler.py
+discord-styled-text - test_escape.py
 ---
 Copyright 2021 classabbyamp, 0x5c
 Released under the terms of the BSD 3-Clause license.
@@ -8,7 +8,7 @@ Released under the terms of the BSD 3-Clause license.
 
 from pytest import param, mark
 
-from discord_styler import StyledText
+from discord_styler import StyledText, escape_everything, escape_markdown, escape_mentions
 
 
 StyledText_test_data = [
