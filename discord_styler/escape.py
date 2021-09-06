@@ -24,10 +24,10 @@ GENERIC_SUB = r"\\\g<0>"
 
 USER_ROLE_CHANNEL_RE = re.compile(r"<(@[!&]?|#)([0-9]+)>")
 USER_ROLE_RE = re.compile(r"<(@[!&]?)([0-9]+)>")
-MENTION_SUB = r"<\g<1>\u200b\g<2>>"
+MENTION_SUB = "<\\g<1>\u200b\\g<2>>"  # this cannot be a raw string because of the \u200b
 
 EVERYONE_HERE_RE = re.compile(r"@(everyone|here)", flags=re.IGNORECASE)
-EVERYONE_HERE_SUB = r"@\u200b\g<1>"
+EVERYONE_HERE_SUB = "@\u200b\\g<1>"  # this cannot be a raw string because of the \u200b
 
 
 def escape_markdown(text: str, *, esc_timestamps: bool = True) -> str:
