@@ -11,9 +11,6 @@ from datetime import datetime, timezone
 from enum import Enum
 from typing import Any, Union
 
-# TODO:
-# - write tests
-# - clean up repo
 
 __all__ = [
     "StyledText",
@@ -138,7 +135,7 @@ class CodeBlock:
         self.__lang = lang if lang else ""
 
     def __str__(self) -> str:
-        return f"```{self.__lang}\n" + self.__code + "\n```"
+        return f"```{self.__lang}\n{self.__code}\n```"
 
 
 # ---- URLs ----
