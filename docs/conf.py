@@ -20,9 +20,9 @@ sys.path.insert(0, os.path.abspath(".."))
 
 # -- Project information -----------------------------------------------------
 
-project = '{{pkg_name}}'
-copyright = '{{YYYY}}, {{authors}}'
-author = '{{authors}}'
+project = 'discord-styled-text'
+copyright = '2021, classabbyamp, 0x5c'
+author = 'classabbyamp, 0x5c'
 
 # The full version, including alpha/beta/rc tags
 release = '{{version}}'
@@ -34,7 +34,9 @@ release = '{{version}}'
 # extensions coming with Sphinx (named "sphinx.ext.*") or your custom
 # ones.
 extensions = [
-    "sphinx.ext.autodoc"
+    "sphinx.ext.autodoc",
+    "sphinx_autodoc_typehints",
+    "enum_tools.autoenum",
 ]
 
 # Add any paths that contain templates here, relative to this directory.

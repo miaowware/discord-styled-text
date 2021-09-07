@@ -1,4 +1,7 @@
 sphinx
 sphinx-autobuild
+sphinx-autodoc-typehints
+sphinx_toolbox
+enum_tools
 -e git+https://github.com/miaowware/miaowware-sphinx-theme.git#egg=miaowware_sphinx_theme
 # put package dependencies here
