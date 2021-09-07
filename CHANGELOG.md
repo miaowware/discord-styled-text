@@ -8,9 +8,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 
-<!-- ## [{{version}}] - YYYY-MM-DD -->
+## [1.0.0] - 2021-09-07
+### Added
+- Inline markdown formatting.
+- Blockquote formatting.
+- Code block formatting.
+- URL formatting (Titled and Non-embedding).
+- User/Role/Channel mention formatting.
+- Timestamp formatting.
+- Markdown and mention escaping functions.
 
 
-<!-- NOTE: Add these links to link the title of each section of the changelog to link to the release -->
-<!-- [Unreleased]: https://github.com/miaowware/discord-styled-text/compare/{{version}}...HEAD -->
-<!-- [{{version}}]: https://github.com/miaowware/discord-styled-text/releases/tag/{{version}} -->
+[Unreleased]: https://github.com/miaowware/discord-styled-text/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/miaowware/discord-styled-text/releases/tag/v1.0.0

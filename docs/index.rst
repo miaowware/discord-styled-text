@@ -118,6 +118,12 @@ Timestamps
 Utility Functions
 -----------------
 
+.. NOTE:: Escaping of markdown titled URLs (like this example below) in text is not yet supported!
+
+    .. code-block:: markdown
+
+        [title](https://example.com)
+
 .. autofunction:: escape_everything()
 
 .. autofunction:: escape_markdown()
